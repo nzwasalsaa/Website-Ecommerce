@@ -1,0 +1,831 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+/* Variabel Warna (Pastikan ini ada di bagian atas style.css Anda) */
+:root {
+    --primary-color: #d89b0a; /* Warna kuning/emas Anda */
+    --secondary-color: #92750e; /* Warna oranye/coklat lebih gelap */
+    --dark-color: #333;
+    --text-color: #555;
+    --light-color: #f8f8f8;
+    --white-color: #ffffff;
+    --border-color: #ddd;
+
+    /* Warna tambahan untuk layout baru */
+    --green-button: #8bc34a; /* Warna hijau tombol download */
+    --green-button-hover: #7cb342;
+    --light-cream: #ede9e0; /* Background di bawah hero */
+    --brown-text: #4b4843; /* Teks gelap kecoklatan */
+}
+
+
+/* --- Hero Section (disesuaikan dengan gambar) --- */
+.hero {
+    background-color: #D3E0C6; /* Warna latar belakang hijau muda mirip gambar */
+    padding: 80px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 450px; /* Tinggi minimal hero section */
+}
+
+.hero .container {
+    display: flex;
+    flex-wrap: wrap; /* Agar konten bisa tumpuk di mobile */
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    max-width: 1200px; /* Lebar maksimum container */
+    width: 100%;
+    z-index: 2;
+}
+
+.hero .hero-text {
+    flex: 1 1 450px; /* Fleksibel, min lebar 450px */
+    text-align: left; /* Teks ke kiri */
+    color: var(--dark-color); /* Warna teks utama */
+    max-width: 550px;
+}
+
+.hero h2 {
+    font-size: 3rem; /* Ukuran font besar */
+    margin-bottom: 15px;
+    line-height: 1.2;
+    font-weight: 800;
+    color: #4CAF50; /* Warna hijau untuk judul */
+    text-transform: uppercase; /* Huruf kapital */
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    font-weight: 400;
+    color: var(--text-color);
+}
+
+.hero .download-button {
+    display: inline-block;
+    background-color: var(--green-button); /* Warna hijau untuk tombol */
+    color: var(--white-color);
+    padding: 15px 40px;
+    border-radius: 50px; /* Lebih bulat */
+    text-decoration: none;
+    font-size: 1.3rem;
+    font-weight: 700;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    border: none;
+    text-transform: uppercase; /* Huruf kapital */
+}
+
+.hero .download-button:hover {
+    background-color: var(--green-button-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.hero .hero-image {
+    flex: 1 1 350px; /* Fleksibel, min lebar 350px */
+    text-align: center;
+    max-width: 450px;
+}
+
+.hero .hero-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px; /* Sedikit lengkung pada gambar */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* --- About Section (disesuaikan dengan gambar) --- */
+.about-section {
+    background-color: var(--light-cream); /* Latar belakang terang mirip gambar */
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.about-section h2 {
+    font-size: 2.5rem;
+    color: var(--brown-text); /* Warna teks gelap kecoklatan */
+    margin-bottom: 25px;
+    font-weight: 700;
+    text-transform: uppercase; /* Huruf kapital */
+}
+
+.about-section h2 span { /* Untuk teks "SAHARA" atau nama toko Anda */
+    color: var(--primary-color); /* Warna kuning/emas untuk nama toko */
+}
+
+.about-section p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: var(--text-color);
+    max-width: 900px;
+    margin: 0 auto 30px;
+}
+
+.about-section .about-content {
+    text-align: left; /* Teks penjelasan paragraf ke kiri */
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.about-section .about-content p {
+    margin-bottom: 20px;
+}
+
+.about-section .read-more-button {
+    display: inline-block;
+    background-color: transparent; /* Transparan */
+    color: var(--primary-color); /* Warna teks kuning/emas */
+    border: 2px solid var(--primary-color); /* Border kuning/emas */
+    padding: 12px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.about-section .read-more-button:hover {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 992px) {
+    .hero .hero-text {
+        text-align: center; /* Di tengah untuk layar sedang */
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+    .hero .hero-image {
+        order: -1; /* Pindahkan gambar ke atas teks di mobile */
+        margin-bottom: 30px;
+    }
+    .hero h2 {
+        font-size: 2.5rem;
+    }
+    .hero p {
+        font-size: 1.1rem;
+    }
+    .hero .download-button {
+        font-size: 1.1rem;
+        padding: 12px 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 60px 15px;
+        min-height: 400px;
+    }
+    .hero h2 {
+        font-size: 2rem;
+    }
+    .about-section h2 {
+        font-size: 2rem;
+    }
+    .about-section p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        padding: 40px 10px;
+        min-height: 350px;
+    }
+    .hero h2 {
+        font-size: 1.8rem;
+    }
+    .hero p {
+        font-size: 0.95rem;
+    }
+    .hero .download-button {
+        font-size: 1rem;
+        padding: 10px 25px;
+    }
+}
+/* Variabel Warna */
+:root {
+    --primary-color: #4CAF50; /* Hijau Cerah, mirip di gambar */
+    --secondary-color: #FFC107; /* Kuning Terang/Oranye, mirip di gambar */
+    --dark-color: #2E7D32; /* Hijau lebih gelap untuk header/footer */
+    --light-color: #f0f8f0; /* Hijau sangat muda untuk latar belakang */
+    --text-color: #333;
+    --white-color: #fff;
+    --border-color: #ddd;
+    --hover-color-primary: #66BB6A; /* Hover hijau */
+    --hover-color-secondary: #FFD54F; /* Hover kuning */
+}
+
+/* Reset CSS Dasar (tetap sama) */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--light-color); /* Latar belakang hijau muda */
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    overflow: hidden;
+    padding: 0 20px;
+}
+
+/* Header */
+header {
+    background: var(--dark-color); /* Header lebih gelap */
+    color: var(--white-color);
+    padding: 1rem 0;
+    border-bottom: 5px solid var(--primary-color);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sedikit lebih kuat */
+}
+
+header h1 {
+    float: left;
+    margin: 0;
+    color: var(--secondary-color); /* Warna kuning untuk judul */
+    font-size: 1.8rem;
+}
+
+header nav {
+    float: right;
+}
+
+header ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+header li {
+    display: inline;
+    padding: 0 15px;
+}
+
+header a {
+    color: var(--white-color);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+header a:hover {
+    color: var(--secondary-color); /* Hover kuning */
+}
+
+/* Main Content Styling */
+main {
+    padding: 40px 0;
+    min-height: calc(100vh - 160px); /* Adjust based on header/footer height */
+}
+
+h2 {
+    color: var(--dark-color); /* Judul H2 lebih gelap */
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+}
+
+/* Hero Section (Beranda) */
+.hero {
+    /* Ganti dengan gambar latar belakang yang sesuai */
+    background: url('../images/sembako-background.jpg') no-repeat center center/cover;
+    color: var(--white-color);
+    text-align: center;
+    padding: 100px 0;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Overlay sedikit lebih terang */
+    z-index: 0;
+}
+
+.hero .container {
+    position: relative;
+    z-index: 1;
+}
+
+.hero h2 {
+    color: var(--white-color);
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.button {
+    display: inline-block;
+    background: var(--secondary-color); /* Tombol utama kuning */
+    color: var(--dark-color); /* Teks tombol gelap */
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 50px; /* Lebih bulat */
+    transition: background 0.3s ease, transform 0.2s ease;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.button:hover {
+    background: var(--hover-color-secondary);
+    transform: translateY(-2px);
+}
+
+/* Product Grid (Menu) */
+.products {
+    background-color: var(--white-color);
+    padding: 40px 0;
+    border-radius: 12px; /* Sudut lebih bulat */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); /* Bayangan lebih dalam */
+    margin-top: 30px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    padding: 20px 0;
+}
+
+.product-item {
+    background-color: var(--white-color);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex; /* Tambahkan ini agar konten bisa fleksibel */
+    flex-direction: column; /* Susun vertikal */
+    justify-content: space-between; /* Untuk mendorong tombol ke bawah */
+}
+.product-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.product-item img { /* KODE BARU UNTUK GAMBAR PRODUK */
+    max-width: 100%; /* Pastikan gambar tidak melebihi lebar kontainer */
+    height: 180px; /* Tinggi tetap untuk semua gambar potret */
+    object-fit: cover; /* Penting: Potong gambar agar sesuai dengan tinggi dan lebar */
+    border-radius: 8px; /* Sudut sedikit melengkung pada gambar */
+    margin-bottom: 15px; /* Jarak antara gambar dan teks */
+    align-self: center; /* Pusatkan gambar dalam flex container */
+    width: auto; /* Izinkan lebar menyesuaikan rasio aspek asli */
+}
+
+.product-item h3 {
+    font-size: 1.4rem;
+    color: var(--dark-color);
+    margin-bottom: 10px;
+}
+
+.product-item p {
+    font-size: 1rem;
+    color: var(--text-color);
+    margin-bottom: 15px;
+    flex-grow: 1; /* Agar deskripsi mengisi ruang */
+}
+
+.product-item .price {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.product-item .add-to-cart {
+    background-color: var(--green-button);
+    color: var(--white-color);
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    width: 100%; /* Tombol memenuhi lebar item */
+    margin-top: auto; /* Dorong tombol ke bawah */
+}
+.product-item .add-to-cart:hover {
+    background-color: var(--green-button-hover);
+}
+
+/* Form Styling (Pemesanan & Kontak) */
+.order-form, .contact {
+    background-color: var(--white-color);
+    padding: 40px;
+    border-radius: 12px; /* Lebih bulat */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); /* Bayangan lebih dalam */
+    max-width: 700px;
+    margin: 40px auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--dark-color);
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px; /* Lebih bulat */
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2); /* Focus ring hijau */
+    outline: none;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.form-group select[multiple] {
+    min-height: 150px; /* Sedikit lebih tinggi */
+}
+
+.order-form button[type="submit"] {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.2rem;
+    margin-top: 20px;
+    background: var(--primary-color); /* Tombol submit hijau */
+    color: var(--white-color);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: background 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.order-form button[type="submit"]:hover {
+    background: var(--hover-color-primary);
+    transform: translateY(-2px);
+}
+
+/* Contact Page Specific (tetap sama, bisa disesuaikan warnanya jika mau) */
+.contact ul {
+    list-style: none;
+    margin-bottom: 30px;
+}
+
+.contact li {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.contact li strong {
+    color: var(--primary-color);
+    margin-right: 5px;
+}
+
+.map-placeholder {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.map-placeholder iframe {
+    width: 100%;
+    max-width: 600px;
+    height: 350px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer */
+footer {
+    background: var(--dark-color); /* Footer lebih gelap */
+    color: var(--white-color);
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 40px; /* Ruang lebih dari konten */
+    border-top: 5px solid var(--primary-color);
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+}
+
+footer p {
+    font-size: 0.9rem;
+}
+
+/* Clearfix (tetap sama) */
+.container::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Responsif (tetap sama, bisa disempurnakan) */
+@media (max-width: 768px) {
+    header h1,
+    header nav {
+        float: none;
+        text-align: center;
+    }
+
+    header nav ul {
+        padding-top: 10px;
+    }
+
+    header li {
+        display: block;
+        padding: 5px 0;
+    }
+
+    .hero h2 {
+        font-size: 2.5rem;
+    }
+
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+   /* ... (kode CSS sebelumnya tetap sama) ... */
+
+/* CSS untuk Kotak Pesanan Tersimpan (sesuai gambar) */
+.saved-order-box {
+    background-color: #e0dcd2;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    max-width: 700px;
+    margin: 40px auto;
+    text-align: center;
+    border: 1px solid #c9c1b3;
+}
+
+.saved-order-box h3 {
+    color: #4b4843;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+}
+
+.saved-order-box .order-customer-details p {
+    text-align: left;
+    margin-bottom: 8px;
+    color: #5d5a55;
+}
+
+.saved-order-box .order-customer-details p strong {
+    color: #4b4843;
+    margin-right: 5px;
+}
+
+.saved-order-box .product-list-header {
+    text-align: left;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #4b4843;
+    border-top: 1px dashed #c9c1b3; /* Garis pemisah */
+    padding-top: 15px;
+}
+
+
+.saved-order-box .order-detail-item {
+    background-color: #d1cbc0;
+    padding: 15px 25px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.1rem;
+    color: #5d5a55;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.saved-order-box .order-detail-item .item-info {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.saved-order-box .order-detail-item .item-info input[type="number"] {
+    width: 60px;
+    padding: 5px;
+    border: 1px solid #c9c1b3;
+    border-radius: 5px;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+}
+
+.saved-order-box .order-detail-item .delete-button {
+    background-color: #db4437;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.saved-order-box .order-detail-item .delete-button:hover {
+    background-color: #c0392b;
+}
+
+.no-saved-order-message {
+    font-style: italic;
+    color: #777;
+    padding: 15px;
+    border: 1px dashed #c9c1b3;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+/* ... (CSS sebelumnya tetap sama) ... */
+
+/* --- Testimonial Section --- */
+
+/* --- Testimonial Section --- */
+.testimonial-section {
+    background-color: var(--light-cream); /* Latar belakang hijau muda / krem */
+    padding: 80px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.testimonial-section::after {
+    content: 'JAYA'; /* Atau "SEMBAKO" atau nama toko Anda */
+    position: absolute;
+    top: 50%;
+    right: -50px;
+    transform: translateY(-50%) rotate(-10deg);
+    font-size: 250px;
+    font-weight: 900;
+    color: rgba(216, 155, 10, 0.1); /* primary-color dengan opacity */
+    z-index: 0;
+    user-select: none;
+}
+
+.testimonial-section h2 {
+    font-size: 2.5rem;
+    color: var(--brown-text);
+    margin-bottom: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+}
+
+.testimonial-section p.subtitle {
+    font-size: 1.15rem;
+    color: var(--text-color);
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 1;
+}
+
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px; /* Jarak antar kotak testimoni */
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.testimonial-item {
+    background-color: var(--white-color); /* Latar belakang putih */
+    padding: 25px; /* Ruang di dalam kotak */
+    border-radius: 12px; /* Sudut membulat */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); /* Efek bayangan */
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 180px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Efek hover */
+}
+
+.testimonial-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.testimonial-item .stars {
+    color: #FFD700;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.testimonial-item .testimonial-text {
+    font-style: italic;
+    color: var(--text-color);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    flex-grow: 1;
+}
+
+.testimonial-item .customer-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: auto;
+}
+
+.testimonial-item .customer-info img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--primary-color);
+}
+
+.testimonial-item .customer-info h4 {
+    font-weight: 600;
+    color: var(--dark-color);
+    margin: 0;
+}
+
+.testimonial-item .customer-info span {
+    font-size: 0.9rem;
+    color: var(--text-color);
+}
+
+/* Responsive Adjustments for Testimonial */
+@media (max-width: 768px) {
+    .testimonial-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Lebih kecil di mobile */
+    }
+    .testimonial-section::after {
+        font-size: 150px; /* Kecilkan teks background */
+        right: -30px;
+    }
+    .testimonial-section h2 {
+        font-size: 2rem;
+    }
+    .testimonial-section p.subtitle {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .testimonial-item {
+        padding: 20px;
+    }
+    .testimonial-item .stars {
+        font-size: 1rem;
+    }
+    .testimonial-item .customer-info img {
+        width: 40px;
+        height: 40px;
+    }
+    .testimonial-section::after {
+        font-size: 100px;
+        right: -20px;
+    }
+}
+
+}

@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Pemesanan - Toko Sembako Abadi</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        
+        .saved-order-box {
+            background-color: #e0dcd2;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            max-width: 700px;
+            margin: 40px auto;
+            text-align: center;
+            border: 1px solid #c9c1b3;
+        }
+
+        .saved-order-box h3 {
+            color: #4b4843;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .saved-order-box .order-customer-details p {
+            text-align: left;
+            margin-bottom: 8px;
+            color: #5d5a55;
+        }
+
+        .saved-order-box .order-customer-details p strong {
+            color: #4b4843;
+            margin-right: 5px;
+        }
+
+        .saved-order-box .product-list-header {
+            text-align: left;
+            font-weight: 600;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            color: #4b4843;
+            border-top: 1px dashed #c9c1b3;
+            padding-top: 15px;
+        }
+
+        .saved-order-box .order-detail-item {
+            background-color: #d1cbc0;
+            padding: 15px 25px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.1rem;
+            color: #5d5a55;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .saved-order-box .order-detail-item .item-info {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .saved-order-box .order-detail-item .item-info input[type="number"] {
+            width: 60px;
+            padding: 5px;
+            border: 1px solid #c9c1b3;
+            border-radius: 5px;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+        }
+
+        .saved-order-box .order-detail-item .delete-button {
+            background-color: #db4437;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .saved-order-box .order-detail-item .delete-button:hover {
+            background-color: #c0392b;
+        }
+
+        .no-saved-order-message {
+            font-style: italic;
+            color: #777;
+            padding: 15px;
+            border: 1px dashed #c9c1b3;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Toko Sembako Abadi</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Beranda</a></li>
+                    <li><a href="menu.html">Produk</a></li>
+                    <li><a href="pemesanan.html">Pemesanan</a></li>
+                    <li><a href="kontak.html">Kontak</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="order-form">
+            <div class="container">
+                <h2>Form Pemesanan</h2>
+                <form id="pemesananForm">
+                    <div class="form-group">
+                        <label for="nama">Nama Lengkap:</label>
+                        <input type="text" id="nama" name="nama" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="telepon">Nomor Telepon:</label>
+                        <input type="tel" id="telepon" name="telepon" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="alamat">Alamat Pengiriman:</label>
+                        <textarea id="alamat" name="alamat" rows="5" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="produk">Pilih Produk:</label>
+                        <select id="produk" name="produk[]" multiple>
+                            <option value="Beras Premium">Beras Premium</option>
+                            <option value="Minyak Goreng Sawit">Minyak Goreng Sawit</option>
+                            <option value="Gula Pasir Kristal">Gula Pasir Kristal</option>
+                            <option value="Telur Ayam Negeri">Telur Ayam Negeri</option>
+                            <option value="Tepung Terigu Serbaguna">Tepung Terigu Serbaguna</option>
+                            <option value="Kopi Bubuk Murni">Kopi Bubuk Murni</option>
+                            <option value="Garam Beryodium">Garam Beryodium</option>
+                            <option value="Mie Instan Aneka Rasa">Mie Instan Aneka Rasa</option>
+                            <option value="Margarin Serbaguna">Margarin Serbaguna</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="catatan">Catatan Tambahan:</label>
+                        <textarea id="catatan" name="catatan" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="button">Kirim Pesanan</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="saved-order-box">
+            <h3>Pesanan Tersimpan</h3>
+            <div id="displaySavedOrder">
+                <p class="no-saved-order-message">Belum ada pesanan yang tersimpan.</p>
+            </div>
+            <button id="clearAllSavedOrder" class="button" style="background-color: #EF5350; margin-top: 20px; display: none;">Hapus Semua Pesanan Tersimpan</button>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 Toko Sembako Abadi. Semua Hak Dilindungi.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('pemesananForm');
+            const produkSelect = document.getElementById('produk');
+            const displaySavedOrderDiv = document.getElementById('displaySavedOrder');
+            const clearAllButton = document.getElementById('clearAllSavedOrder');
+
+            // --- Fungsi untuk menyimpan data form ke localStorage ---
+            function saveFormData() {
+                const formData = {
+                    nama: document.getElementById('nama').value,
+                    email: document.getElementById('email').value,
+                    telepon: document.getElementById('telepon').value,
+                    alamat: document.getElementById('alamat').value,
+                    catatan: document.getElementById('catatan').value,
+                    // Produk yang dipilih akan dikelola secara terpisah di 'savedItems'
+                };
+                localStorage.setItem('customerFormData', JSON.stringify(formData));
+                renderSavedOrder(); // Perbarui tampilan setelah menyimpan data pelanggan
+            }
+
+            // --- Fungsi untuk memuat data form dari localStorage ke input form ---
+            function loadFormDataToForm() {
+                const savedCustomerData = localStorage.getItem('customerFormData');
+                if (savedCustomerData) {
+                    const formData = JSON.parse(savedCustomerData);
+                    document.getElementById('nama').value = formData.nama || '';
+                    document.getElementById('email').value = formData.email || '';
+                    document.getElementById('telepon').value = formData.telepon || '';
+                    document.getElementById('alamat').value = formData.alamat || '';
+                    document.getElementById('catatan').value = formData.catatan || '';
+                }
+
+                // memuat pilihan produk ke dropdown dari 'savedItems'
+                const savedItems = JSON.parse(localStorage.getItem('savedItems')) || [];
+                Array.from(produkSelect.options).forEach(option => {
+                    option.selected = false; // Reset semua pilihan
+                });
+
+                savedItems.forEach(item => {
+                    const option = Array.from(produkSelect.options).find(opt => opt.value === item.name);
+                    if (option) {
+                        option.selected = true;
+                    } else {
+                        
+                        const newOption = document.createElement('option');
+                        newOption.value = item.name;
+                        newOption.textContent = item.name;
+                        newOption.selected = true;
+                        produkSelect.appendChild(newOption);
+                    }
+                });
+            }
+
+            // --- Fungsi untuk menampilkan ringkasan pesanan tersimpan di bawah form ---
+            function renderSavedOrder() {
+                const savedCustomerData = JSON.parse(localStorage.getItem('customerFormData'));
+                const savedItems = JSON.parse(localStorage.getItem('savedItems')) || [];
+                let contentHtml = '';
+
+                const hasSavedData = (savedCustomerData && Object.values(savedCustomerData).some(val => val !== '')) || savedItems.length > 0;
+
+                if (hasSavedData) {
+                    // Tampilkan detail pelanggan
+                    if (savedCustomerData && (savedCustomerData.nama || savedCustomerData.email || savedCustomerData.telepon || savedCustomerData.alamat || savedCustomerData.catatan)) {
+                        contentHtml += '<div class="order-customer-details">';
+                        contentHtml += `<p><strong>Nama:</strong> ${savedCustomerData.nama || '-'}</p>`;
+                        contentHtml += `<p><strong>Email:</strong> ${savedCustomerData.email || '-'}</p>`;
+                        contentHtml += `<p><strong>Telepon:</strong> ${savedCustomerData.telepon || '-'}</p>`;
+                        contentHtml += `<p><strong>Alamat:</strong> ${savedCustomerData.alamat || '-'}</p>`;
+                        contentHtml += `<p><strong>Catatan:</strong> ${savedCustomerData.catatan || '-'}</p>`;
+                        contentHtml += '</div>';
+                    }
+
+                    // Tampilkan daftar produk
+                    if (savedItems.length > 0) {
+                        contentHtml += '<div class="product-list-header">Produk Dipesan:</div>';
+                        savedItems.forEach((item, index) => {
+                            contentHtml += `
+                                <div class="order-detail-item">
+                                    <div class="item-info">
+                                        <span>${item.name}</span>
+                                        Jumlah: <input type="number" value="${item.quantity}" min="1" class="item-quantity-input" data-index="${index}">
+                                    </div>
+                                    <button class="delete-button" data-index="${index}">Hapus</button>
+                                </div>
+                            `;
+                        });
+                    } else if (savedCustomerData && (savedCustomerData.nama || savedCustomerData.email || savedCustomerData.telepon || savedCustomerData.alamat || savedCustomerData.catatan)) {
+                       
+                        contentHtml += '<p class="no-saved-order-message">Belum ada produk terpilih.</p>';
+                    } else {
+                         contentHtml = '<p class="no-saved-order-message">Belum ada pesanan yang tersimpan.</p>';
+                    }
+                    clearAllButton.style.display = 'block'; // Tampilkan tombol hapus semua
+                } else {
+                    contentHtml = '<p class="no-saved-order-message">Belum ada pesanan yang tersimpan.</p>';
+                    clearAllButton.style.display = 'none'; // Sembunyikan tombol hapus semua
+                }
+                displaySavedOrderDiv.innerHTML = contentHtml;
+
+                // event listener untuk tombol hapus item
+                document.querySelectorAll('.order-detail-item .delete-button').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const indexToDelete = parseInt(this.dataset.index);
+                        deleteItemFromSavedOrder(indexToDelete);
+                    });
+                });
+
+                // event listener untuk input jumlah
+                document.querySelectorAll('.item-quantity-input').forEach(input => {
+                    input.addEventListener('change', function() {
+                        const indexToUpdate = parseInt(this.dataset.index);
+                        const newQuantity = parseInt(this.value);
+                        updateItemQuantity(indexToUpdate, newQuantity);
+                    });
+                });
+            }
+
+            // --- Fungsi untuk menghapus item tertentu dari pesanan tersimpan ---
+            function deleteItemFromSavedOrder(index) {
+                let savedItems = JSON.parse(localStorage.getItem('savedItems')) || [];
+                if (index > -1 && index < savedItems.length) {
+                    const deletedItemName = savedItems[index].name;
+                    savedItems.splice(index, 1); // Hapus 1 item pada index tertentu
+                    localStorage.setItem('savedItems', JSON.stringify(savedItems));
+                    renderSavedOrder(); // Perbarui tampilan setelah menghapus
+
+                    // Hapus pilihan dari dropdown di form
+                    const optionToRemove = Array.from(produkSelect.options).find(opt => opt.value === deletedItemName);
+                    if (optionToRemove) {
+                        optionToRemove.selected = false;
+                    }
+                }
+            }
+
+            // --- Fungsi untuk memperbarui jumlah item di pesanan tersimpan ---
+            function updateItemQuantity(index, newQuantity) {
+                if (newQuantity < 1) newQuantity = 1; 
+                let savedItems = JSON.parse(localStorage.getItem('savedItems')) || [];
+                if (index > -1 && index < savedItems.length) {
+                    savedItems[index].quantity = newQuantity;
+                    localStorage.setItem('savedItems', JSON.stringify(savedItems));
+                    renderSavedOrder(); // Perbarui tampilan setelah memperbarui jumlah
+                }
+            }
+
+            // --- Fungsi untuk menghapus SEMUA pesanan tersimpan ---
+            function clearAllSavedOrder() {
+                if (confirm('Anda yakin ingin menghapus semua pesanan tersimpan?')) {
+                    localStorage.removeItem('customerFormData');
+                    localStorage.removeItem('savedItems');
+                    form.reset(); // Reset form pelanggan
+                    Array.from(produkSelect.options).forEach(option => option.selected = false); // Reset pilihan produk
+                    renderSavedOrder(); 
+                }
+            }
+
+            // --- fungsi saat halaman dimuat ---
+            loadFormDataToForm(); // Isi form dari data pelanggan yang tersimpan
+            renderSavedOrder();   // Tampilkan ringkasan pesanan tersimpan
+
+            // Simpan data form pelanggan setiap kali ada perubahan pada input
+            form.addEventListener('input', saveFormData);
+            // Tambahkan event listener untuk perubahan pada dropdown produk untuk memastikan sinkronisasi
+            produkSelect.addEventListener('change', function() {
+                // Ketika pilihan di dropdown berubah, update savedItems
+                let currentSavedItems = JSON.parse(localStorage.getItem('savedItems')) || [];
+                let newSelectedItems = Array.from(produkSelect.options)
+                                            .filter(option => option.selected)
+                                            .map(option => {
+                                                // item yang sudah ada untuk mempertahankan jumlah
+                                                const existing = currentSavedItems.find(item => item.name === option.value);
+                                                return {
+                                                    name: option.value,
+                                                    quantity: existing ? existing.quantity : 1 
+                                                };
+                                            });
+                localStorage.setItem('savedItems', JSON.stringify(newSelectedItems));
+                renderSavedOrder(); // Perbarui tampilan
+            });
+
+
+            // Event listener untuk tombol Hapus Semua
+            clearAllButton.addEventListener('click', clearAllSavedOrder);
+
+
+            // --- Handle form submission ---
+            form.addEventListener('submit', function(event) {
+                event.preventDefault(); // Mencegah form dikirim ke server
+
+                const customerData = {
+                    nama: document.getElementById('nama').value,
+                    email: document.getElementById('email').value,
+                    telepon: document.getElementById('telepon').value,
+                    alamat: document.getElementById('alamat').value,
+                    catatan: document.getElementById('catatan').value
+                };
+                const savedItems = JSON.parse(localStorage.getItem('savedItems')) || [];
+
+                if (savedItems.length === 0) {
+                     alert('Keranjang pesanan kosong. Silakan tambahkan produk atau pilih dari daftar.');
+                     return;
+                }
+                
+                const completeOrder = {
+                    customerInfo: customerData,
+                    orderedItems: savedItems
+                };
+
+                console.log("Pesanan Dikirim:", completeOrder); 
+
+                alert('Pesanan Anda telah diterima! (Detail pesanan ditampilkan di konsol. Fungsionalitas penyimpanan ke server memerlukan backend).');
+                
+                // Hapus data dari localStorage setelah "submit"
+                localStorage.removeItem('customerFormData'); // Hapus data pelanggan
+                localStorage.removeItem('savedItems'); // Hapus item yang dipesan
+                
+                // Reset form dan tampilan
+                form.reset();
+                Array.from(produkSelect.options).forEach(option => option.selected = false); // Reset pilihan produk
+                renderSavedOrder(); // Perbarui tampilan (akan kosong)
+            });
+        });
+    </script>
+</body>
+</html>
